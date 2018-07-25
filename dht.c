@@ -47,7 +47,7 @@ void read_dht_data()
 		{
 			/* shove each bit into the storage bytes */
 			data[j / 8] <<= 1;
-			if ( counter > 16 )
+			if ( counter > 50 )
 				data[j / 8] |= 1;
 			j++;
 		}
