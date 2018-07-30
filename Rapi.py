@@ -9,10 +9,10 @@ with open('secrets.json') as f:
 	secrets = json.load(f)
 
 sensor = Adafruit_DHT.DHT22
-conn = pymysql.connect(host="host",
-                    user="user",
-                    passwd="passwd",
-                    db="db")
+conn = pymysql.connect(host=secrets['host'],
+                    user=secrets['user'],
+                    passwd=secrets['passwd'],
+                    db=secrets['db'])
 
 pin = 20
 try:

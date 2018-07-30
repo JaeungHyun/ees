@@ -3,11 +3,15 @@ import time
 import pymysql
 import matplotlib.pyplot as plt
 import matplotlib.legend as legend
+import json
+
+with open('secrets.json') as f:
+	secrets = json.load(f)
 
 conn=pymysql.connect(host="192.168.219.21",
-					user="admin",
-					passwd="wowodnd1",
-					db="raspi_db")
+					user=secrets['user'],
+					passwd=secrets['passwd'],
+					db=secrets['db'])
 
 current=datetime.datetime.now()
 last_time=current-datetime.timedelta(minutes=1)
