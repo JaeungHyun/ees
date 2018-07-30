@@ -1,9 +1,13 @@
 import pymysql
+import json
+
+with open('secrets.json') as f:
+	secrets = json.load(f)
 
 conn=pymysql.connect(host="192.168.219.21",
-                    user="admin",
-                    passwd="wowodnd1",
-                    db="raspi_db")
+                    user=secrets['user'],
+                    passwd=secrets['passwd'],
+                    db=secrets['db'])
 
 try:
     with conn.cursor() as cur:
