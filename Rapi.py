@@ -3,12 +3,16 @@ import sys
 import time
 import Adafruit_DHT
 import pymysql
+import json
+
+with open('secrets.json') as f:
+	secrets = json.load(f)
 
 sensor = Adafruit_DHT.DHT22
-conn = pymysql.connect(host="localhost",
-                    user="admin",
-                    passwd="wowodnd1",
-                    db="raspi_db")
+conn = pymysql.connect(host="host",
+                    user="user",
+                    passwd="passwd",
+                    db="db")
 
 pin = 20
 try:
