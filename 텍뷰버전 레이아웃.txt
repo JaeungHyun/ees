@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_weight="35"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/sky" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:background="@color/temp"
+        android:gravity="center"
+        android:layout_weight="25"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/temp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="현재 온도 :  " />
+            <TextView
+                android:id="@+id/nowtem"
+                android:text="25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="'C" />
+
+            <Button
+                android:id="@+id/update"
+                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_margin="60px"
+                android:onClick="mOnclick"
+                android:text="갱신하기" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/temp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="희망 온도 :  " />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editData"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   'C" />
+            <Button
+                android:id="@+id/btsend"
+                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_margin="60px"
+                android:onClick="mOnclick"
+                android:text="보내기" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="50px"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/up"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_margin="60px"
+                android:text="Up" />
+
+            <Button
+                android:id="@+id/down"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_margin="60px"
+                android:text="Down" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:background="@color/air"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 습도 :  30%" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:background="@color/water"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/editIP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:digits="0123456789."
+                android:hint="IPv4 주소 입력"
+                android:inputType="number"
+                android:text="192.168.0.2"/>  //수정이 되면 다른 ip주소를 입력하기.
+            //루프백 주소
+            <Button
+                android:id="@+id/btconnect"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:onClick="mOnclick"
+                android:text="연결" />                  //bt1 = 연결   bt2=종료  bt3 = 보내기
+                                                            //연결=btconnect   종료=btquit   보내기=btsend
+
+            <Button
+                android:id="@+id/btquit"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:onClick="mOnclick"
+                android:text="종료" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </ScrollView>
+
+
+
+    </LinearLayout>
+</LinearLayout>
