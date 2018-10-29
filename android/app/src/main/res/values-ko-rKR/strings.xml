@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jol5</string>
+    <string name="title_image_description">타이틀 이미지</string>
+    <string name="applied">성공적으로 적용되었습니다.</string>
+    <string name="up">▲</string>
+    <string name="down">▼</string>
+    <string name="temperature_tooltip">온도</string>
+    <string name="targetTemp">목표온도</string>
+    <string name="water_tooltip">수위</string>
+</resources>
