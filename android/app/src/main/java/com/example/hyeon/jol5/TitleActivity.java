@@ -17,25 +17,20 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 
-public class MainActivity extends AppCompatActivity {
-
+public class TitleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, TitleActivity.class);
-        startActivity(intent);
-        setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
+        setContentView(R.layout.activity_start);
+        startLoading();
     }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        //android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
+    private void startLoading() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        }, 2000);
     }
 }

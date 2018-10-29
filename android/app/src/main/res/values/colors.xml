@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="background">#FFFFFF  </color>
-    <color name="air">#6086df</color>
-    <color name="water">#064bed</color>
+    <color name="colorPrimary">#3fb543</color>
+    <color name="colorPrimaryDark">#216923</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="background">#ffffff</color>
+    <color name="text">#000000</color>
+    <color name="cardBackground">#7e7e7e</color>
+    <color name="confirmed">#00ff00</color>
+    <color name="rejected">#ff0000</color>
+    <color name="graphBack">#222222</color>
 </resources>

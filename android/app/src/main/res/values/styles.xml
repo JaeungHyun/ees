@@ -8,13 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="Card">
-        <item name="android:background">@color/background</item>
+        <item name="android:elevation">20dp</item>
+        <item name="android:background">@color/cardBackground</item>
         <item name="android:layout_margin">3dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">1dp</item>
     </style>
     <style name="Background">
         <item name="android:background">@color/background</item>
+        <item name="android:padding">1dp</item>
     </style>
     <style name="Title">
 
@@ -22,6 +25,24 @@
     <style name="TitleText">
         <item name="android:textColor">@color/background</item>
         <item name="android:textSize">50pt</item>
-
+    </style>
+    <style name="DefaultText">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+    <style name="ConfirmedText" parent="DefaultText">
+        <item name="android:textColor">@color/confirmed</item>
+    </style>
+    <style name="RejectedText" parent="DefaultText">
+        <item name="android:textColor">@color/rejected</item>
+    </style>
+    <style name="DefaultButton">
+        <item name="android:layout_margin">1dp</item>
+    </style>
+    <style name="WaterGraphBackground">
+        <item name="android:background">@color/graphBack</item>
+    </style>
+    <style name="WaterGraphForeground">
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 </resources>
