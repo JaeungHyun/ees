@@ -1,225 +1,399 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:elevation="0dp"
-    android:orientation="vertical">
+    android:gravity="end">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/Background"
-        style="@style/Background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="0dp">
+    <Button
+        android:id="@+id/button"
+        style="@style/DefaultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:text="@string/option_button"
+        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/TemperatureLayout"
-            style="@style/Card"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:elevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <LinearLayout
-                android:id="@+id/TemperatureButtonLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="2dp"
-                android:orientation="vertical"
-                android:padding="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/TempViewLayout"
-                app:layout_constraintTop_toTopOf="parent">
+            <Space
+                android:id="@+id/OptionButtonSpace"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
 
-                <Button
-                    android:id="@+id/TempUp"
-                    style="@style/DefaultButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="0dp"
-                    android:text="@string/up" />
-
-                <Button
-                    android:id="@+id/TempDown"
-                    style="@style/DefaultButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/down" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/TempViewLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/TemperatureButtonLayout"
-                app:layout_constraintEnd_toStartOf="@+id/TemperatureButtonLayout"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/TempTooltip"
-                app:layout_constraintTop_toTopOf="@+id/TemperatureButtonLayout">
-
-                <TextView
-                    android:id="@+id/NowTemp"
-                    style="@style/DefaultText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-                <EditText
-                    android:id="@+id/TargetTemp"
-                    style="@style/DefaultText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/targetTemp"
-                    android:inputType="textPersonName" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/WaterLevelOutput"
-                style="@style/ConfirmedText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/TemperatureLayout"
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
-                android:text="@string/applied"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/TemperatureButtonLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/TemperatureButtonLayout" />
-
-            <TextView
-                android:id="@+id/TempTooltip"
-                style="@style/DefaultText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/temperature_tooltip"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/TempViewLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/TempViewLayout" />
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/LevelLayout"
-            style="@style/Card"
-            android:layout_width="match_parent"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:elevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TemperatureLayout">
-
-            <LinearLayout
-                android:id="@+id/LevelButtonLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:elevation="2dp"
-                android:orientation="vertical"
-                android:padding="0dp"
+                android:elevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <Button
-                    android:id="@+id/TermUp"
-                    style="@style/DefaultButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="0dp"
-                    android:text="@string/up" />
-
-                <Button
-                    android:id="@+id/TermDown"
-                    style="@style/DefaultButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/down" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LevelViewLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/LevelButtonLayout"
-                app:layout_constraintEnd_toStartOf="@+id/LevelButtonLayout"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/LevelTooltip"
-                app:layout_constraintTop_toTopOf="@+id/LevelButtonLayout">
+                <ImageView
+                    android:id="@+id/TempTitleImage"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:contentDescription="@string/temp_image_desc"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/temperature_red" />
 
                 <TextView
-                    android:id="@+id/NowLevel"
+                    android:id="@+id/TempTooltip"
                     style="@style/DefaultText"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/temperature_tooltip"
+                    app:layout_constraintBottom_toBottomOf="@+id/TempTitleImage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <LinearLayout
-                    android:id="@+id/TermLayout"
+                    android:id="@+id/TempContentLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginStart="1dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TempTitleImage">
 
-                    <TextView
-                        android:id="@+id/nowTerm"
-                        style="@style/DefaultText"
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/NowTempLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/TempTitleImage">
 
-                    <EditText
-                        android:id="@+id/targetTerm"
-                        style="@style/DefaultText"
+                        <TextView
+                            android:id="@+id/NowTempTooltip"
+                            style="@style/DefaultText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/now_temp"
+                            android:textAlignment="viewStart"
+                            app:layout_constraintBottom_toTopOf="@+id/NowTemp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/NowTemp"
+                            style="@style/DefaultText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="1dp"
+                            android:text="34"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/NowTempTooltip" />
+
+                        <TextView
+                            android:id="@+id/NowTempUnit"
+                            style="@style/DefaultText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginTop="1dp"
+                            android:text="@string/celsius"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/NowTemp"
+                            app:layout_constraintTop_toBottomOf="@+id/NowTempTooltip" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/TempControlLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/TempOutput"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/NowTempLayout">
+
+                        <TextView
+                            android:id="@+id/TargetTempTooltip"
+                            style="@style/DefaultText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/target_temp"
+                            app:layout_constraintBottom_toTopOf="@+id/TargetTemp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                        <EditText
+                            android:id="@+id/TargetTemp"
+                            style="@style/DefaultText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginStart="8dp"
+                            android:ems="10"
+                            android:hint="@string/targetTemp"
+                            android:inputType="textPersonName"
+                            android:textAlignment="viewEnd"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/TargetTempUnit"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:id="@+id/TargetTempUnit"
+                            style="@style/DefaultText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/celsius"
+                            app:layout_constraintBottom_toBottomOf="@+id/TargetTemp"
+                            app:layout_constraintEnd_toStartOf="@+id/TemperatureButtonLayout"
+                            app:layout_constraintTop_toTopOf="@+id/TargetTemp" />
+
+                        <LinearLayout
+                            android:id="@+id/TemperatureButtonLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:elevation="2dp"
+                            android:orientation="vertical"
+                            android:padding="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <Button
+                                android:id="@+id/TempUp"
+                                style="@style/DefaultButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:elevation="0dp"
+                                android:text="@string/up" />
+
+                            <Button
+                                android:id="@+id/TempDown"
+                                style="@style/DefaultButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/down" />
+
+                        </LinearLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/WaterLayout"
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:elevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TemperatureLayout">
+
+                <ImageView
+                    android:id="@+id/WaterTitleImage"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:contentDescription="@string/temp_image_desc"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/water_blue" />
+
+                <TextView
+                    android:id="@+id/LevelTooltip"
+                    style="@style/DefaultText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/water_tooltip"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintBottom_toBottomOf="@+id/WaterTitleImage"
+                    app:layout_constraintEnd_toEndOf="@+id/WaterTitleImage"
+                    app:layout_constraintStart_toStartOf="@+id/WaterTitleImage" />
+
+                <LinearLayout
+                    android:id="@+id/WaterContentLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/WaterTitleImage">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/LevelLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/WaterTitleImage">
+
+                        <TextView
+                            android:id="@+id/NowLevelTooltip"
+                            style="@style/DefaultText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/now_level"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/NowLevel"
+                            style="@style/DefaultText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="40"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/NowLevelTooltip" />
+
+                        <TextView
+                            android:id="@+id/NowLevelUnti"
+                            style="@style/DefaultText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/percentage"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/NowLevel"
+                            app:layout_constraintTop_toBottomOf="@+id/NowLevelTooltip" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/WaterControlLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/WaterTitleImage">
+
+                        <TextView
+                            android:id="@+id/TermTooltip"
+                            style="@style/DefaultText"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/target_term"
+                            android:textAlignment="viewStart"
+                            app:layout_constraintBottom_toTopOf="@+id/TargetTerm"
+                            app:layout_constraintEnd_toStartOf="@+id/termControls"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/TermUnit"
+                            style="@style/DefaultText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/hour"
+                            android:textAlignment="viewStart"
+                            app:layout_constraintBottom_toBottomOf="@+id/TargetTerm"
+                            app:layout_constraintEnd_toStartOf="@+id/termControls"
+                            app:layout_constraintTop_toTopOf="@+id/TargetTerm" />
+
+                        <EditText
+                            android:id="@+id/TargetTerm"
+                            style="@style/DefaultText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:ems="10"
+                            android:hint="@string/target_term_hint"
+                            android:inputType="textPersonName"
+                            android:textAlignment="viewEnd"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/TermUnit"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <LinearLayout
+                            android:id="@+id/termControls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <Button
+                                android:id="@+id/termUp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/up" />
+
+                            <Button
+                                android:id="@+id/termDown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/down" />
+                        </LinearLayout>
+                    </android.support.constraint.ConstraintLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/Output"
-                style="@style/ConfirmedText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/applied"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/LevelButtonLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LevelButtonLayout" />
+        </LinearLayout>
+    </ScrollView>
 
-            <TextView
-                android:id="@+id/LevelTooltip"
-                style="@style/DefaultText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/water_tooltip"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/LevelViewLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/LevelViewLayout" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.constraint.ConstraintLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

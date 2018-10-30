@@ -5,7 +5,7 @@
     <color name="colorAccent">#ff4081</color>
     <color name="background">#ffffff</color>
     <color name="text">#000000</color>
-    <color name="cardBackground">#7e7e7e</color>
+    <color name="cardBackground">#fff</color><!--#7e7e7e</color>-->
     <color name="confirmed">#00ff00</color>
     <color name="rejected">#ff0000</color>
     <color name="graphBack">#222222</color>
