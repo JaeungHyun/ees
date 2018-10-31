@@ -9,17 +9,27 @@
     android:gravity="end">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/RefreshButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/refresh"
+        app:layout_constraintBottom_toBottomOf="@+id/OptionButton"
+        app:layout_constraintEnd_toStartOf="@+id/OptionButton"
+        app:layout_constraintTop_toTopOf="@+id/OptionButton" />
+
+    <Button
+        android:id="@+id/OptionButton"
         style="@style/DefaultButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="1dp"
         android:text="@string/option_button"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="@+id/ScrollView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/ScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,9 +53,6 @@
                 style="@style/Card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:elevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +71,11 @@
 
                 <TextView
                     android:id="@+id/TempTooltip"
-                    style="@style/DefaultText"
+                    style="@style/Title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/temperature_tooltip"
+                    android:textColor="@color/tempTitle"
                     app:layout_constraintBottom_toBottomOf="@+id/TempTitleImage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -161,14 +169,14 @@
 
                         <EditText
                             android:id="@+id/TargetTemp"
-                            style="@style/DefaultText"
+                            style="@style/DefaultEditText"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:layout_marginStart="8dp"
                             android:ems="10"
                             android:hint="@string/targetTemp"
-                            android:inputType="textPersonName"
+                            android:inputType="numberDecimal"
                             android:textAlignment="viewEnd"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/TargetTempUnit"
@@ -227,9 +235,6 @@
                 style="@style/Card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:elevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -248,11 +253,12 @@
 
                 <TextView
                     android:id="@+id/LevelTooltip"
-                    style="@style/DefaultText"
+                    style="@style/Title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/water_tooltip"
                     android:textAlignment="viewStart"
+                    android:textColor="@color/waterTitle"
                     app:layout_constraintBottom_toBottomOf="@+id/WaterTitleImage"
                     app:layout_constraintEnd_toEndOf="@+id/WaterTitleImage"
                     app:layout_constraintStart_toStartOf="@+id/WaterTitleImage" />
@@ -354,13 +360,13 @@
 
                         <EditText
                             android:id="@+id/TargetTerm"
-                            style="@style/DefaultText"
+                            style="@style/DefaultEditText"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:ems="10"
                             android:hint="@string/target_term_hint"
-                            android:inputType="textPersonName"
+                            android:inputType="numberDecimal"
                             android:textAlignment="viewEnd"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/TermUnit"
@@ -376,18 +382,33 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <Button
-                                android:id="@+id/termUp"
+                                android:id="@+id/TermUp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/up" />
 
                             <Button
-                                android:id="@+id/termDown"
+                                android:id="@+id/TermDown"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/down" />
                         </LinearLayout>
                     </android.support.constraint.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/waterOutput"
+                        style="@style/ConfirmedText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/applied"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/WaterControlLayout" />
 
                 </LinearLayout>
 

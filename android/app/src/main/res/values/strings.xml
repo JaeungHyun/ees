@@ -4,7 +4,7 @@
     <string name="applied">successfully applied</string>
     <string name="up">up</string>
     <string name="down">down</string>
-    <string name="temperature_tooltip">Temperature</string>
+    <string name="temperature_tooltip">\tTemperature</string>
     <string name="water_tooltip">Water Level</string>
     <string name="targetTemp">Target Temperature</string>
     <string name="now_temp">Temperature on now : </string>
@@ -14,9 +14,11 @@
     <string name="target_term"> Set water giving timing to : </string>
     <string name="temp_image_desc">Temperature title image</string>
     <string name="option_button">Option</string>
-    <string name="app_name">Jol5</string>
+    <string name="app_name" translatable="false">EES</string>
     <string name="target_term_hint">Target Timing</string>
     <string name="celsius" translatable="false">℃</string>
     <string name="hour">hour</string>
     <string name="percentage" translatable="false">%</string>
+    <string name="refresh">Refresh</string>
+    <string name="update_success">update successfully.</string>
 </resources>
