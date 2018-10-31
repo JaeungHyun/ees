@@ -23,6 +23,7 @@ class Packer{
 }
 class Sender extends Thread{
     MainActivity act;
+    public boolean active=true;
     public static int clickDelay=800;
     public int nowDelay=4000;
     public boolean sent=false,flag=false;
@@ -31,7 +32,7 @@ class Sender extends Thread{
     }
     @Override
     public void run() {
-        while(true) {
+        while(active) {
             try {
                 if (nowDelay > 0) {
                     nowDelay -= 50;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TitleActivity.class);
         startActivity(intent);
         setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
+        //Initializing
         refresh=findViewById(R.id.RefreshButton);
         option=findViewById(R.id.OptionButton);
         tempUp=findViewById(R.id.TempUp);
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         termInput=findViewById(R.id.TargetTerm);
         nowTemp=findViewById(R.id.NowTemp);
         nowWater=findViewById(R.id.NowLevel);
+        //Event Binding
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,9 +116,19 @@ public class MainActivity extends AppCompatActivity {
                 termDownClick();
             }
         });
+
+    }
+    public void onResume() {
+        super.onResume();
         sender=new Sender(this);
         sender.start();
     }
+
+    public void onPause() {
+        sender.active = false;
+        super.onPause();
+    }
+
     public void generateToast(final String data){
         runOnUiThread(new Runnable() {
             @Override

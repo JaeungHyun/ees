@@ -17,4 +17,5 @@
     <string name="target_term_hint">목표 주기</string>
     <string name="hour">시간</string>
     <string name="refresh">새로고침</string>
+    <string name="update_success">업데이트가 성공적으로 이루어졌습니다.</string>
 </resources>
