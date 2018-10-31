@@ -25,13 +25,4 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
     }
 
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
-    }
 }
