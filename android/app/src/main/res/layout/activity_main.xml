@@ -337,6 +337,7 @@
                             android:layout_marginStart="8dp"
                             android:gravity="center_vertical"
                             android:text="@string/target_term"
+                            android:textAlignment="viewStart"
                             app:layout_constraintBottom_toTopOf="@+id/TargetTerm"
                             app:layout_constraintEnd_toStartOf="@+id/termControls"
                             app:layout_constraintStart_toStartOf="parent"
@@ -352,6 +353,7 @@
                             android:layout_marginTop="8dp"
                             android:gravity="center_vertical"
                             android:text="@string/hour"
+                            android:textAlignment="viewStart"
                             app:layout_constraintBottom_toBottomOf="@+id/TargetTerm"
                             app:layout_constraintEnd_toStartOf="@+id/termControls"
                             app:layout_constraintTop_toTopOf="@+id/TargetTerm" />
