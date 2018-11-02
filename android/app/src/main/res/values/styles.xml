@@ -10,7 +10,7 @@
     <style name="Card">
         <item name="android:elevation">20dp</item>
         <item name="android:background">@color/cardBackground</item>
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_margin">3dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">1dp</item>
@@ -20,15 +20,14 @@
         <item name="android:padding">1dp</item>
     </style>
     <style name="Title">
-        <item name="android:textSize">33sp</item>
-        <item name="android:layout_marginStart">20dp</item>
+
     </style>
     <style name="TitleText">
         <item name="android:textColor">@color/background</item>
         <item name="android:textSize">50pt</item>
     </style>
     <style name="DefaultText">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/text</item>
     </style>
     <style name="ConfirmedText" parent="DefaultText">
@@ -39,9 +38,6 @@
     </style>
     <style name="DefaultButton">
         <item name="android:layout_margin">1dp</item>
-    </style>
-    <style name="DefaultEditText" parent="DefaultText">
-        <item name="android:imeOptions">actionDone</item>
     </style>
     <style name="WaterGraphBackground">
         <item name="android:background">@color/graphBack</item>

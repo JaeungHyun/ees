@@ -8,7 +8,5 @@
     <color name="cardBackground">#fff</color><!--#7e7e7e</color>-->
     <color name="confirmed">#00ff00</color>
     <color name="rejected">#ff0000</color>
-    <color name="tempTitle">#e8350f</color>
-    <color name="waterTitle">#5858fe</color>
     <color name="graphBack">#222222</color>
 </resources>
