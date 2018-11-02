@@ -18,7 +18,10 @@ import android.widget.Toast;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-class Packer{
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Packet{//TODO set network flow to get
 
 }
 class Sender extends Thread{
@@ -26,6 +29,7 @@ class Sender extends Thread{
     public boolean active=true;
     public static int clickDelay=800;
     public int nowDelay=4000;
+    public Queue<Packet> packets=new LinkedList<>();
     public boolean sent=false,flag=false;
     public Sender(MainActivity act){
         this.act=act;
@@ -50,7 +54,11 @@ class Sender extends Thread{
             }
         }
     }
+    public void addPacket(Packet p){
+        packets.add(p);
+    }
     public void sendToServer(){
+        //TODO sendToServer packets
         act.generateToast(act.getString(R.string.update_success));
     }
 
@@ -116,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 termDownClick();
             }
         });
-
+        refreshClick();
     }
     public void onResume() {
         super.onResume();
@@ -143,14 +151,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void optionClick(){
-
+        Intent intent=new Intent(this,SettingActivity.class);
+        startActivity(intent);
     }
     public void tempUpClick(){
         String tmpStr=tempInput.getText().toString();
         if(tmpStr.length()==0) tmpStr="0";
         double tmp=Double.parseDouble(tmpStr);
-        tmp+=.01;
-        tempInput.setText(String.format("%.2f",tmp));
+        tmp+=.1;
+        tempInput.setText(String.format("%.1f",tmp));
         sender.nowDelay=Sender.clickDelay;
         sender.sent=false;
     }
@@ -158,16 +167,29 @@ public class MainActivity extends AppCompatActivity {
         String tmpStr=tempInput.getText().toString();
         if(tmpStr.length()==0) tmpStr="0";
         double tmp=Double.parseDouble(tmpStr);
-        tmp-=.01;
-        tempInput.setText(String.format("%.2f",tmp));
+        tmp-=.1;
+        tempInput.setText(String.format("%.1f",tmp));
         sender.nowDelay=Sender.clickDelay;
         sender.sent=false;
     }
     public void termUpClick(){
-
+        String tmpStr=termInput.getText().toString();
+        if(tmpStr.length()==0) tmpStr="1";
+        int tmp=Integer.parseInt(tmpStr);
+        tmp+=1;
+        termInput.setText(String.format("%d",tmp));
+        sender.nowDelay=Sender.clickDelay;
+        sender.sent=false;
     }
     public void termDownClick(){
-
+        String tmpStr=termInput.getText().toString();
+        if(tmpStr.length()==0) tmpStr="1";
+        int tmp=Integer.parseInt(tmpStr);
+        tmp-=1;
+        if(tmp<1)tmp=1;
+        termInput.setText(String.format("%d",tmp));
+        sender.nowDelay=Sender.clickDelay;
+        sender.sent=false;
     }
 
 
