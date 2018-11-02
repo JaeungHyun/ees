@@ -1,10 +1,5 @@
 <resources>
     <string name="app_name">Jol5</string>
     <string name="title_image_description">title image</string>
-    <string name="applied">successfully applied</string>
-    <string name="up">up</string>
-    <string name="down">down</string>
-    <string name="temperature_tooltip">Temperature</string>
-    <string name="water_tooltip">Water Level</string>
-    <string name="targetTemp">Target Temperature</string>
+    <sttring name="applied">successfully applied</sttring>
 </resources>
