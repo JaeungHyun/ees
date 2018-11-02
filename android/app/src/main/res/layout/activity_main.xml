@@ -23,8 +23,8 @@
         style="@style/DefaultButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:text="@string/option_button"
+        android:layout_marginEnd="4dp"
+        android:text="@string/option"
         app:layout_constraintEnd_toEndOf="@+id/ScrollView"
         app:layout_constraintTop_toTopOf="parent" />
 

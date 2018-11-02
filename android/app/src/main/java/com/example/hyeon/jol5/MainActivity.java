@@ -1,6 +1,7 @@
 package com.example.hyeon.jol5;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,8 +28,7 @@ class Packet{//TODO set network flow to get
 class Sender extends Thread{
     MainActivity act;
     public boolean active=true;
-    public static int clickDelay=800;
-    public int nowDelay=4000;
+    public int nowDelay=0;
     public Queue<Packet> packets=new LinkedList<>();
     public boolean sent=false,flag=false;
     public Sender(MainActivity act){
@@ -64,10 +64,11 @@ class Sender extends Thread{
 
 }
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences pref;
     public Button refresh,option,tempUp,tempDown,termUp,termDown;
     public EditText tempInput,termInput;
     public TextView nowTemp,nowWater;
-
+    public int maxDelay;
     Sender sender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onResume() {
         super.onResume();
+        pref=getSharedPreferences("EES",MODE_PRIVATE);
+        maxDelay=SettingActivity.MaxDelay/100*pref.getInt("autoUpdate",20)+5;
         sender=new Sender(this);
         sender.start();
     }
@@ -160,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         double tmp=Double.parseDouble(tmpStr);
         tmp+=.1;
         tempInput.setText(String.format("%.1f",tmp));
-        sender.nowDelay=Sender.clickDelay;
+        sender.nowDelay=maxDelay;
         sender.sent=false;
     }
     public void tempDownClick(){
@@ -169,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         double tmp=Double.parseDouble(tmpStr);
         tmp-=.1;
         tempInput.setText(String.format("%.1f",tmp));
-        sender.nowDelay=Sender.clickDelay;
+        sender.nowDelay=maxDelay;
         sender.sent=false;
     }
     public void termUpClick(){
@@ -178,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         int tmp=Integer.parseInt(tmpStr);
         tmp+=1;
         termInput.setText(String.format("%d",tmp));
-        sender.nowDelay=Sender.clickDelay;
+        sender.nowDelay=maxDelay;
         sender.sent=false;
     }
     public void termDownClick(){
@@ -188,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         tmp-=1;
         if(tmp<1)tmp=1;
         termInput.setText(String.format("%d",tmp));
-        sender.nowDelay=Sender.clickDelay;
+        sender.nowDelay=maxDelay;
         sender.sent=false;
     }
 
