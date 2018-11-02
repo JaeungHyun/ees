@@ -49,4 +49,13 @@
     <style name="WaterGraphForeground">
         <item name="android:background">@color/colorPrimary</item>
     </style>
+    <style name="OptionTitle" parent="DefaultText">
+        <item name="android:background">@drawable/border</item>
+    </style>
+    <style name="OptionTooltip" parent="DefaultText">
+
+    </style>
+    <style name="OptionSubTitle" parent="OptionTooltip">
+        <item name="android:paddingStart">16dp</item>
+    </style>
 </resources>
