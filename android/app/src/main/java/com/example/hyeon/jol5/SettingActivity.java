@@ -1,6 +1,7 @@
 package com.example.hyeon.jol5;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,11 +19,22 @@ import java.net.Socket;
 
 
 public class SettingActivity extends AppCompatActivity {
-
+    SharedPreferences pref=getSharedPreferences("EES",MODE_PRIVATE);
+    SharedPreferences.Editor editor=pref.edit();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-    }
 
+    }
+    @Override
+    public void onPause() {
+
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+
+        super.onResume();
+    }
 }
