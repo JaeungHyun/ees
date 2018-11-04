@@ -14,7 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -23,7 +25,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 class Packet{//TODO set network flow to get
-    static String diff=",";
+    static String diff="\n";
     public float nowTemp=0f,nowHum=0f,nowWater=0f, targetTemp=0f;
     public int targetTerm=0;
     public String SendToPacket(String type){
@@ -97,17 +99,20 @@ class Sender extends Thread{
             String stream=packets.poll();
             Socket sock=new Socket();
             sock.connect(ip);
-            Scanner in=new Scanner(sock.getInputStream());
+            BufferedReader in=new BufferedReader(new InputStreamReader(sock.getInputStream()));
             OutputStream out=sock.getOutputStream();
             out.write(stream.getBytes());
-            while(in.hasNext()){
-                ret+=in.nextLine()+"\n";
+            out.flush();
+            String buf=in.readLine();
+            while(!buf.equals("")){
+                ret+=buf+"\n";
+                buf=in.readLine();
             }
             out.close();
             in.close();
             sock.close();
         }
-        Log.d("인풋",ret);
+        Log.d("input",ret);
         return ret;
     }
 }
@@ -227,7 +232,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void refresh(){
-        Log.d("REFRESH","REFRESH");
         triggerSender("refresh");
         nowTemp.setText(""+pack.nowTemp);
         nowWater.setText(""+pack.nowWater);
