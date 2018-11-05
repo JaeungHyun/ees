@@ -28,32 +28,12 @@ class Packet{//TODO set network flow to get
     static String diff="\n";
     public float nowTemp=0f,nowHum=0f,nowWater=0f, targetTemp=0f;
     public int targetTerm=0;
-    public String SendToPacket(String type){
-        switch(type){
-            case "refresh":
-                return type;
-            case "nowTemp":
-                return ""+nowTemp;
-            case "nowHum":
-                return ""+nowHum;
-            case "nowWater":
-                return ""+nowWater;
-            case "targetTerm":
-                return ""+targetTerm;
-            case "targetTemp":
-                return ""+targetTemp;
-            default:
-                return "";
-        }
-    }
     public void ParseToPacket(String stream){
         String[] data=stream.split(diff);
         try {
             nowTemp = Float.parseFloat(data[0]);
-            nowHum = Float.parseFloat(data[1]);
-            nowWater = Float.parseFloat(data[2]);
-            targetTerm = Integer.parseInt(data[3]);
-            targetTemp = Float.parseFloat(data[4]);
+            //nowHum = Float.parseFloat(data[1]);
+            nowWater = Float.parseFloat(data[1])/10f;
         }catch(NullPointerException e){
             e.printStackTrace();
         }
@@ -112,6 +92,10 @@ class Sender extends Thread{
             in.close();
             sock.close();
         }
+        act.pack.ParseToPacket(ret);
+        act.nowTemp.setText(""+act.pack.nowTemp);
+        act.nowWater.setText(""+act.pack.nowWater);
+        act.nowHum.setText(""+act.pack.nowHum);
         Log.d("input",ret);
         return ret;
     }
@@ -233,9 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void refresh(){
         triggerSender("refresh");
-        nowTemp.setText(""+pack.nowTemp);
-        nowWater.setText(""+pack.nowWater);
-        nowHum.setText(""+pack.nowHum);
+
     }
     public void toOption(){
         Intent intent=new Intent(this,SettingActivity.class);
