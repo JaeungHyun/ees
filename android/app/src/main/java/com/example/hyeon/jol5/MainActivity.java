@@ -25,15 +25,16 @@ import java.util.Queue;
 import java.util.Scanner;
 
 class Packet{//TODO set network flow to get
-    static String diff="\n";
-    public float nowTemp=0f,nowHum=0f,nowWater=0f, targetTemp=0f;
-    public int targetTerm=0;
+    static String diff=",";
+    public float nowTemp=0f,nowHum=0f,nowWater=0f,targetTemp=0f;
+    public int targetTerm=0,nowTerm=0;
     public void ParseToPacket(String stream){
         String[] data=stream.split(diff);
         try {
             nowTemp = Float.parseFloat(data[0]);
-            //nowHum = Float.parseFloat(data[1]);
-            nowWater = Float.parseFloat(data[1])/10f;
+            nowHum = Float.parseFloat(data[1]);
+            nowTerm = Integer.parseInt(data[2]);
+            nowWater = Float.parseFloat(data[3]);
         }catch(NullPointerException e){
             e.printStackTrace();
         }
@@ -44,7 +45,7 @@ class Sender extends Thread{
     InetSocketAddress ip=new InetSocketAddress("10.149.154.31",12222);//TODO set proper address
     public boolean active=true;
     public int nowDelay=0;
-    public Queue<String> packets=new LinkedList<>();
+    public String packet="";
     public boolean sent=false,flag=false;
     public Sender(MainActivity act){
         this.act=act;
@@ -67,17 +68,19 @@ class Sender extends Thread{
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                act.generateToast(act.getString(R.string.update_failed));
             }
         }
     }
     public void addPacket(String p){
-        packets.add(p);
+        packet=p;
     }
     public String sendToServer() throws IOException {
         String ret="";
-        while(!packets.isEmpty()){
-            String stream=packets.poll();
+        while(packet.length()!=0){
+            String stream=packet;
             Socket sock=new Socket();
+            sock.setSoTimeout(2);
             sock.connect(ip);
             BufferedReader in=new BufferedReader(new InputStreamReader(sock.getInputStream()));
             OutputStream out=sock.getOutputStream();
@@ -216,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void refresh(){
-        triggerSender("refresh");
+        triggerSender();
 
     }
     public void toOption(){
@@ -231,34 +234,28 @@ public class MainActivity extends AppCompatActivity {
         String tmpStr=String.format("%d",pack.targetTerm);
         termInput.setText(tmpStr);
     }
-    public void sendTemp(){
-        triggerSender("temp:"+tempInput.getText().toString());
-    }
-    public void sendTerm(){
-        triggerSender("term:"+termInput.getText().toString());
-    }
     public void tempUp(){
         pack.targetTemp+=.1;
         setTempView();
-        sendTemp();
+        triggerSender();
     }
     public void tempDown(){
         pack.targetTemp-=.1;
         setTempView();
-        sendTemp();
+        triggerSender();
     }
     public void termUp(){
         pack.targetTerm+=1;
         setTermView();
-        sendTerm();
+        triggerSender();
     }
     public void termDown(){
         if(pack.targetTerm>1)pack.targetTerm-=1;
         setTermView();
-        sendTerm();
+        triggerSender();
     }
-    public void triggerSender(String data){
-        sender.addPacket(data);
+    public void triggerSender(){
+        sender.addPacket(String.format("%.1f",pack.targetTemp)+","+pack.targetTerm);
         sender.nowDelay=maxDelay;
         sender.sent=false;
     }
