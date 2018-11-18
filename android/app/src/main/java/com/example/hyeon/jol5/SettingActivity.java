@@ -50,7 +50,7 @@ public class SettingActivity extends AppCompatActivity {
     public void onPause() {
         editor.putInt("autoUpdate",nowDelay);
         editor.putInt("port",Integer.parseInt(portIn.getText().toString()));
-        editor.putString("IP",portIn.getText().toString());
+        editor.putString("IP",ipIn.getText().toString());
         editor.commit();
         super.onPause();
     }
@@ -61,7 +61,7 @@ public class SettingActivity extends AppCompatActivity {
         editor=pref.edit();
         nowDelay=pref.getInt("autoUpdate",20);
         ipIn.setText(pref.getString("IP","127.0.0.1"));
-        portIn.setText(pref.getInt("port",4400));
+        portIn.setText(String.valueOf(pref.getInt("port",4400)));
         autoUpdate.setProgress(nowDelay);
     }
     public void moveSeekBar(int i){

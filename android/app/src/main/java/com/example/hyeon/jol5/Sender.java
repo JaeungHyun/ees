@@ -13,7 +13,7 @@ class Sender extends Thread{
     MainActivity act;
     InetSocketAddress ip;
     public boolean active=true;
-    public int nowDelay=0;
+    public int nowDelay=100;
     public String packet="";
     public boolean sent=false,flag=false;
     public Sender(MainActivity act,String ip,int port){
@@ -38,6 +38,8 @@ class Sender extends Thread{
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                sent = true;
+                flag = false;
                 act.generateToast(act.getString(R.string.update_failed));
             }
         }
