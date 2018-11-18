@@ -25,6 +25,7 @@ public class SettingActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     SeekBar autoUpdate;
     TextView autoUpdateView;
+    EditText ipIn,portIn;
     Button resetButton;
     public static final int MaxDelay=5000;
     int nowDelay=0;
@@ -34,6 +35,8 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         autoUpdate=findViewById(R.id.AutoUpdateTermSeekBar);
         autoUpdateView=findViewById(R.id.AutoUpdateTermValue);
+        ipIn=findViewById(R.id.IpInput);
+        portIn=findViewById(R.id.PortInput);
         autoUpdate.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar,int i, boolean b) {moveSeekBar(i);}
@@ -46,6 +49,8 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         editor.putInt("autoUpdate",nowDelay);
+        editor.putInt("port",Integer.parseInt(portIn.getText().toString()));
+        editor.putString("IP",portIn.getText().toString());
         editor.commit();
         super.onPause();
     }
@@ -55,6 +60,8 @@ public class SettingActivity extends AppCompatActivity {
         pref=getSharedPreferences("EES",MODE_PRIVATE);
         editor=pref.edit();
         nowDelay=pref.getInt("autoUpdate",20);
+        ipIn.setText(pref.getString("IP","127.0.0.1"));
+        portIn.setText(pref.getInt("port",4400));
         autoUpdate.setProgress(nowDelay);
     }
     public void moveSeekBar(int i){

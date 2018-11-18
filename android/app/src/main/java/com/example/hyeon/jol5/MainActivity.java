@@ -25,16 +25,15 @@ import java.util.Queue;
 import java.util.Scanner;
 
 class Packet{//TODO set network flow to get
-    static String diff=",";
+    static String diff="\n";
     public float nowTemp=0f,nowHum=0f,nowWater=0f,targetTemp=0f;
-    public int targetTerm=0,nowTerm=0;
+    public int targetTerm=0;
     public void ParseToPacket(String stream){
         String[] data=stream.split(diff);
         try {
             nowTemp = Float.parseFloat(data[0]);
             nowHum = Float.parseFloat(data[1]);
-            nowTerm = Integer.parseInt(data[2]);
-            nowWater = Float.parseFloat(data[3]);
+            nowWater = Float.parseFloat(data[2]);
         }catch(NullPointerException e){
             e.printStackTrace();
         }
@@ -42,12 +41,13 @@ class Packet{//TODO set network flow to get
 }
 class Sender extends Thread{
     MainActivity act;
-    InetSocketAddress ip=new InetSocketAddress("10.149.154.31",12222);//TODO set proper address
+    InetSocketAddress ip;
     public boolean active=true;
     public int nowDelay=0;
     public String packet="";
     public boolean sent=false,flag=false;
-    public Sender(MainActivity act){
+    public Sender(MainActivity act,String ip,int port){
+        this.ip=new InetSocketAddress(ip,port);
         this.act=act;
     }
     @Override
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         pref=getSharedPreferences("EES",MODE_PRIVATE);
         maxDelay=SettingActivity.MaxDelay/100*pref.getInt("autoUpdate",20)+5;
-        sender=new Sender(this);
+        sender=new Sender(this,pref.getString("IP","127.0.0.1"),pref.getInt("port",4400));
         sender.start();
         refresh();
         pack.targetTemp=pref.getFloat("temp",20f);

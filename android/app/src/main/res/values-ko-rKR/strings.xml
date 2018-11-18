@@ -25,4 +25,5 @@
     <string name="update_failed">업데이트가 실패하였습니다.</string>
     <string name="ip">아이피</string>
     <string name="port">포트번호</string>
+    <string name="connection">연결</string>
 </resources>

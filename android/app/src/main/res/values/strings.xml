@@ -28,6 +28,6 @@
     <string name="update_failed">updated failed</string>
     <string name="ip">IP</string>
     <string name="port">Port</string>
-
+    <string name="connection">Connection</string>
 
 </resources>
