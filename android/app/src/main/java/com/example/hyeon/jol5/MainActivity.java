@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
         triggerSender();
     }
     public void triggerSender(){
-        sender.addPacket(String.format("%.1f",pack.targetTemp)+","+pack.targetTerm);
+        sender.addPacket(String.format("%.1f",pack.targetTemp)+","+(pack.targetTerm*3600));
         sender.nowDelay=maxDelay;
         sender.sent=false;
     }

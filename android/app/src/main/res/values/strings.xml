@@ -26,4 +26,8 @@
     <string name="second">second(s)</string>
     <string name="now_humidity">Humidity</string>
     <string name="update_failed">updated failed</string>
+    <string name="ip">IP</string>
+    <string name="port">Port</string>
+
+
 </resources>

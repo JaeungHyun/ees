@@ -23,4 +23,6 @@
     <string name="second">초</string>
     <string name="now_humidity">현재 습도</string>
     <string name="update_failed">업데이트가 실패하였습니다.</string>
+    <string name="ip">아이피</string>
+    <string name="port">포트번호</string>
 </resources>

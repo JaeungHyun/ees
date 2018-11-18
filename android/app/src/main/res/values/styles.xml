@@ -53,7 +53,7 @@
         <item name="android:background">@drawable/border</item>
     </style>
     <style name="OptionTooltip" parent="DefaultText">
-
+        <item name="android:layout_margin">4dp</item>
     </style>
     <style name="OptionSubTitle" parent="OptionTooltip">
         <item name="android:paddingStart">16dp</item>
