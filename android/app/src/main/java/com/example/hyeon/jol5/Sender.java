@@ -31,41 +31,44 @@ class Sender extends Thread{
                 }
                 sleep(50);
                 if (flag && !sent) {
-                    sendToServer();
+                    boolean test=sendToServer();
                     sent = true;
                     flag = false;
+                    if(test)
                     act.generateToast(act.getString(R.string.update_success));
+                    else
+                        act.generateToast(act.getString(R.string.update_failed));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                sent = true;
-                flag = false;
-                act.generateToast(act.getString(R.string.update_failed));
             }
         }
     }
     public void addPacket(String p){
         packet=p;
     }
-    public String sendToServer() throws IOException {
+    public boolean sendToServer(){
         String ret="";
         while(packet.length()!=0){
             String stream=packet;
             Socket sock=new Socket();
-            sock.setSoTimeout(2);
-            sock.connect(ip);
-            BufferedReader in=new BufferedReader(new InputStreamReader(sock.getInputStream()));
-            OutputStream out=sock.getOutputStream();
-            out.write(stream.getBytes());
-            out.flush();
-            String buf=in.readLine();
-            while(!buf.equals("")){
-                ret+=buf+"\n";
-                buf=in.readLine();
+            try {
+                sock.connect(ip,2);
+                BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                OutputStream out = sock.getOutputStream();
+                out.write(stream.getBytes());
+                out.flush();
+                String buf = in.readLine();
+                while (!buf.equals("")) {
+                    ret += buf + "\n";
+                    buf = in.readLine();
+                }
+                out.close();
+                in.close();
+                sock.close();
+            }catch(IOException e){
+                return false;
             }
-            out.close();
-            in.close();
-            sock.close();
         }
         act.pack.ParseToPacket(ret);
         act.nowTemp.setText(""+act.pack.nowTemp);
@@ -75,6 +78,6 @@ class Sender extends Thread{
             act.nowWater.setText(act.getString(R.string.lack_water));
         act.nowHum.setText(""+act.pack.nowHum);
         Log.d("input",ret);
-        return ret;
+        return true;
     }
 }
