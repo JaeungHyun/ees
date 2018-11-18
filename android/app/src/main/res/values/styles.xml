@@ -51,11 +51,13 @@
     </style>
     <style name="OptionTitle" parent="DefaultText">
         <item name="android:background">@drawable/border</item>
+        <item name="android:padding">4dp</item>
     </style>
     <style name="OptionTooltip" parent="DefaultText">
         <item name="android:layout_margin">4dp</item>
+        <item name="android:gravity">start</item>
     </style>
     <style name="OptionSubTitle" parent="OptionTooltip">
-        <item name="android:paddingStart">16dp</item>
+        <!--item name="android:padding">16dp</item-->
     </style>
 </resources>

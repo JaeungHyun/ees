@@ -31,7 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="@string/autoUpdate" />
+            android:text="@string/autoUpdate"
+            android:textAlignment="textStart" />
 
         <SeekBar
             android:id="@+id/AutoUpdateTermSeekBar"
@@ -85,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/ip"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textStart" />
 
         <EditText
             android:id="@+id/IpInput"
@@ -94,7 +95,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAlignment="textEnd" />
 
     </LinearLayout>
 
@@ -108,12 +110,12 @@
 
         <TextView
             android:id="@+id/PortTooltip"
-            style="@style/OptionTooltip"
+            style="@style/OptionSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/port"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textStart" />
 
         <EditText
             android:id="@+id/PortInput"
@@ -122,7 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:textAlignment="textEnd" />
     </LinearLayout>
 
 
