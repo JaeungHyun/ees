@@ -69,7 +69,10 @@ class Sender extends Thread{
         }
         act.pack.ParseToPacket(ret);
         act.nowTemp.setText(""+act.pack.nowTemp);
-        act.nowWater.setText(""+act.pack.nowWater);
+        if(act.pack.nowWater==1)
+            act.nowWater.setText(act.getString(R.string.enough_water));
+        else
+            act.nowWater.setText(act.getString(R.string.lack_water));
         act.nowHum.setText(""+act.pack.nowHum);
         Log.d("input",ret);
         return ret;

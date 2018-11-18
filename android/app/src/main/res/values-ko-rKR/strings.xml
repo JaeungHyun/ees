@@ -26,4 +26,6 @@
     <string name="ip">아이피</string>
     <string name="port">포트번호</string>
     <string name="connection">연결</string>
+    <string name="enough_water">충분</string>
+    <string name="lack_water">부족</string>
 </resources>

@@ -29,5 +29,6 @@
     <string name="ip">IP</string>
     <string name="port">Port</string>
     <string name="connection">Connection</string>
-
+    <string name="enough_water">Enough</string>
+    <string name="lack_water">Lack</string>
 </resources>
