@@ -53,7 +53,7 @@ class Sender extends Thread{
             String stream=packet;
             Socket sock=new Socket();
             try {
-                sock.connect(ip,2);
+                sock.connect(ip,2000);
                 BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 OutputStream out = sock.getOutputStream();
                 out.write(stream.getBytes());
@@ -63,9 +63,6 @@ class Sender extends Thread{
                     ret += buf + "\n";
                     buf = in.readLine();
                 }
-                out.close();
-                in.close();
-                sock.close();
             }catch(IOException e){
                 return false;
             }
