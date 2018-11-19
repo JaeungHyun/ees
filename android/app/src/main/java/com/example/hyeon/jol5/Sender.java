@@ -49,7 +49,7 @@ class Sender extends Thread{
     }
     public boolean sendToServer(){
         String ret="";
-        while(packet.length()!=0){
+        //while(packet.length()!=0){
             String stream=packet;
             Socket sock=new Socket();
             try {
@@ -59,15 +59,18 @@ class Sender extends Thread{
                 out.write(stream.getBytes());
                 out.flush();
                 String buf = in.readLine();
-                while (!buf.equals("")) {
+                while (buf!=null) {
                     ret += buf + "\n";
                     buf = in.readLine();
                 }
+                in.close();
+                out.close();
+                sock.close();
+                act.pack.ParseToPacket(ret);
             }catch(IOException e){
-                return false;
+                e.printStackTrace();
             }
-        }
-        act.pack.ParseToPacket(ret);
+        //}
         act.nowTemp.setText(""+act.pack.nowTemp);
         if(act.pack.nowWater==1)
             act.nowWater.setText(act.getString(R.string.enough_water));
