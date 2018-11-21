@@ -40,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, TitleActivity.class);
-        startActivity(intent);
+        if(getIntent().getBooleanExtra("flag",true)){
+            Intent intent = new Intent(this, TitleActivity.class);
+            startActivity(intent);
+        }
         setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
         //Initializing
         refresh=findViewById(R.id.RefreshButton);
@@ -135,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     public void toOption(){
         Intent intent=new Intent(this,SettingActivity.class);
         startActivity(intent);
+        finish();
     }
     public void setTempView(){
         String tmpStr=String.format("%.1f",pack.targetTemp);

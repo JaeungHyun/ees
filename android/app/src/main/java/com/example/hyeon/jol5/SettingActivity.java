@@ -26,11 +26,11 @@ public class SettingActivity extends AppCompatActivity {
     SeekBar autoUpdate;
     TextView autoUpdateView;
     EditText ipIn,portIn;
-    Button resetButton;
     public static final int MaxDelay=5000;
     int nowDelay=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         autoUpdate=findViewById(R.id.AutoUpdateTermSeekBar);
@@ -64,13 +64,16 @@ public class SettingActivity extends AppCompatActivity {
         portIn.setText(String.valueOf(pref.getInt("port",4400)));
         autoUpdate.setProgress(nowDelay);
     }
-    public void moveSeekBar(int i){
-        nowDelay=i;
-        autoUpdateView.setText(String.format("%.02f",MaxDelay/100f*nowDelay/1000+0.05f));
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("flag",false);
+        startActivity(intent);
+        super.onBackPressed();
     }
-    public void resetDefault(){
-        editor.clear();
-        editor.commit();
-        onResume();
+    public void moveSeekBar(int i) {
+        nowDelay = i;
+        autoUpdateView.setText(String.format("%.02f", MaxDelay / 100f * nowDelay / 1000 + 0.05f));
     }
+
 }

@@ -53,7 +53,7 @@ class Sender extends Thread{
             String stream=packet;
             Socket sock=new Socket();
             try {
-                sock.connect(ip,2000);
+                sock.connect(ip,1000);
                 BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 OutputStream out = sock.getOutputStream();
                 out.write(stream.getBytes());
@@ -69,6 +69,7 @@ class Sender extends Thread{
                 act.pack.ParseToPacket(ret);
             }catch(IOException e){
                 e.printStackTrace();
+                return false;
             }
         //}
         act.nowTemp.setText(""+act.pack.nowTemp);
