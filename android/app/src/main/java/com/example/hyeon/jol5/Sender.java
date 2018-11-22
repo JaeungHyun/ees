@@ -72,12 +72,12 @@ class Sender extends Thread{
                 return false;
             }
         //}
-        act.nowTemp.setText(""+act.pack.nowTemp);
+        act.nowTemp.setText(String.format("%.1f",act.pack.nowTemp));
         if(act.pack.nowWater==1)
             act.nowWater.setText(act.getString(R.string.enough_water));
         else
             act.nowWater.setText(act.getString(R.string.lack_water));
-        act.nowHum.setText(""+act.pack.nowHum);
+        act.nowHum.setText(String.format("%.1f",act.pack.nowHum));
         Log.d("input",ret);
         return true;
     }
