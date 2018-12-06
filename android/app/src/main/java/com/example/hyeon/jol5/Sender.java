@@ -49,7 +49,6 @@ class Sender extends Thread{
     }
     public boolean sendToServer(){
         String ret="";
-        //while(packet.length()!=0){
             String stream=packet;
             Socket sock=new Socket();
             try {
